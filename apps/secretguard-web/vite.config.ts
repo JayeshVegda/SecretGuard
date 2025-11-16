@@ -14,7 +14,7 @@ export default defineConfig(({ command }) => ({
   resolve: {
     alias: command === 'serve' 
       ? {
-          'secretguard-core': path.resolve(__dirname, '../../packages/vibegard-core/src'),
+          'secretguard-core': path.resolve(__dirname, '../../packages/secretguard-core/src'),
         }
       : {},
   },

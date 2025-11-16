@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build:core && npm run build --workspace=apps/vibegard-web",
-  "outputDirectory": "apps/vibegard-web/dist",
+  "buildCommand": "npm run build:web",
+  "outputDirectory": "apps/secretguard-web/dist",
   "installCommand": "npm install",
   "framework": "vite"
 }

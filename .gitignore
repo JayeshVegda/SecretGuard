@@ -10,6 +10,7 @@ coverage/
 # Production
 dist/
 build/
+**/dist/
 *.local
 
 # Logs

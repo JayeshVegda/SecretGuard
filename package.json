@@ -8,11 +8,11 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "build:web": "npm run build:core && npm run build --workspace=apps/vibegard-web",
+    "build:web": "npm run build:core && npm run build --workspace=apps/secretguard-web",
     "test": "npm run test --workspaces",
     "lint": "npm run lint --workspaces",
-    "dev": "npm run build:core && npm run dev --workspace=apps/vibegard-web",
-    "build:core": "npm run build --workspace=packages/vibegard-core",
+    "dev": "npm run build:core && npm run dev --workspace=apps/secretguard-web",
+    "build:core": "npm run build --workspace=packages/secretguard-core",
     "predev": "npm run build:core"
   },
   "devDependencies": {
