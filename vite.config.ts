@@ -13,7 +13,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      'vibegard-core': path.resolve(__dirname, '../../packages/vibegard-core/src'),
+      'secretguard-core': path.resolve(__dirname, 'packages/vibegard-core/src'),
     },
   },
 });

@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "description": "Client-side sensitive data detection and masking library",
   "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.esm.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./worker": "./dist/worker.js"
+    "./worker": {
+      "import": "./dist/worker.mjs",
+      "require": "./dist/worker.js"
+    }
   },
   "files": [
     "dist"

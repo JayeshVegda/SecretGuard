@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build:core && npm run build --workspace=apps/vibegard-web",
+  "outputDirectory": "apps/vibegard-web/dist",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rootDirectory": "./"
+}
+
