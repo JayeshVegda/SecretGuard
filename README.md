@@ -1,207 +1,99 @@
 <div align="center">
 
-# 🛡️ SecretGuard
+<img src="apps/secretguard-web/public/favicon.svg" alt="SecretGuard logo" height="96" />
 
-**AI-safe data protection**
+# SecretGuard Cleaner
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+_Client-side redaction before AI ever sees your sensitive text._
 
-**Automatically detect and mask sensitive data before sharing with ChatGPT, Claude, Gemini, or any LLM.**
+[secretguard.vercel.app](https://secretguard.vercel.app)
 
-*Zero setup • Complete privacy • 100% client-side*
-
-</div>
-
----
-
-## ✨ About
-
-SecretGuard is a **100% client-side** sensitive data detection and masking library that protects your secrets before they reach AI services. Built for modern workflows where AI assistants are essential, but data privacy is non-negotiable.
-
-### 🌟 Key Features
-
-- 🔒 **100% Client-Side** - Your data never leaves your browser
-- ⚡ **Zero Setup** - Works instantly, no configuration needed
-- 🎯 **Smart Detection** - Automatically detects emails, API keys, SSNs, credit cards, passwords, and more
-- 🎨 **Real-Time Masking** - See protected text as you type
-- 🌓 **Dark Mode** - Beautiful UI with light/dark theme support
-- 🆓 **Free Forever** - No sign-up required
-
----
-
-## 📸 Screenshots
-
-<div align="center">
-
-![SecretGuard Interface](apps/secretguard-web/dist/assets/img1.png)
-
-*Main interface with real-time detection and masking*
-
-![Detection Features](apps/secretguard-web/dist/assets/img2.png)
-
-*Advanced detection capabilities*
-
-![Privacy Protection](apps/secretguard-web/dist/assets/img3.png)
-
-*Client-side privacy guarantee*
+<p>
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+<img src="https://img.shields.io/badge/Vite-563D7C?style=for-the-badge&logo=vite&logoColor=ffdd35" alt="Vite" />
+<img src="https://img.shields.io/badge/TypeScript-1f425f?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-0f172a?style=for-the-badge&logo=tailwind-css&logoColor=38bdf8" alt="Tailwind CSS" />
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+</p>
 
 </div>
 
----
+## Project Overview
 
-## 🚀 Getting Started
+SecretGuard Cleaner is a privacy-first toolkit that detects, masks, and previews sensitive data before you paste prompts into LLMs or share snippets with teammates. Everything runs locally in the browser, powered by a reusable secret-detection core and a modern Vite + React experience.
+
+## Key Features
+
+- 🔐 **Client-side redaction pipeline** – Finds PII, credentials, tokens, and banking details without sending text to a server.
+- ⚡ **Instant text comparison** – Side-by-side panes show original vs. masked content along with detector highlights.
+- 🧠 **Reusable detection core** – `packages/secretguard-core` exposes detectors/maskers so you can embed the logic in other apps.
+- 🎛️ **Policy-aware masking** – Switch between masking policies for different security contexts.
+- 🌓 **Polished UI** – Responsive Tailwind UI with theme toggle, trust microcopy, and onboarding-ready hero section.
+
+## Screenshots & Demo
+https://github.com/user-attachments/assets/7ebf1577-bb2d-4110-80f5-4b4ba3397bba
+| Original Input | Masked Output | Trust & CTA |
+| --- | --- | --- |
+| ![Original sample](apps/secretguard-web/dist/assets/img1.png) | ![Masked sample](apps/secretguard-web/dist/assets/img2.png) | ![Trust indicators](apps/secretguard-web/dist/assets/img3.png) |
+
+> Need a live glance? Visit the hosted build at [secretguard.vercel.app](https://secretguard.vercel.app).
+
+## Installation Guide
+
+1. Ensure you have Node.js ≥ 18 and npm ≥ 9 installed.
+2. Clone the repository: `git clone <repo-url> && cd cleaner`
+3. Install workspace dependencies: `npm install`
+4. Build the detection core once (required for the web app): `npm run build:core`
+
+## How to Run / Usage
 
 ```bash
-# Clone and install
-git clone https://github.com/yourusername/secretguard.git
-cd secretguard
-npm install
-
-# Start development
+# Start the client with freshly built detectors
 npm run dev
+
+# Build production assets
+npm run build:web
+
+# Run unit tests across workspaces
+npm test
 ```
 
-Available at `http://localhost:5173`
+- The dev server launches the Vite web app at `http://localhost:5173`.
+- Paste any text in the “Original” editor; detections stream in as you type.
+- Download the masked copy or copy-to-clipboard when you are satisfied with the redaction.
 
----
-
-## 📁 Project Structure
+## Folder Structure
 
 ```
-secretguard/
-├── 📱 apps/
-│   └── secretguard-web/          # Web application
-│       ├── src/
-│       │   ├── components/       # React components
-│       │   │   ├── Header.jsx
-│       │   │   ├── Hero.jsx
-│       │   │   ├── TextComparator.jsx
-│       │   │   ├── TrustSection.jsx
-│       │   │   └── ui/           # UI primitives
-│       │   ├── lib/              # Utilities
-│       │   ├── App.jsx           # Main app component
-│       │   └── main.jsx         # Entry point
-│       ├── public/               # Static assets
-│       ├── dist/                 # Build output
-│       └── package.json
-│
-├── 📦 packages/
-│   └── secretguard-core/         # Core detection library
-│       ├── src/
-│       │   ├── detectors.ts      # Detection algorithms
-│       │   ├── masker.ts         # Masking logic
-│       │   ├── types.ts          # TypeScript types
-│       │   ├── worker.ts         # Web Worker implementation
-│       │   └── index.ts          # Main export
-│       ├── dist/                 # Compiled output
-│       └── package.json
-│
-├── 📄 package.json               # Root workspace config
-├── 📄 vercel.json                # Deployment config
-├── 📄 LICENSE                    # MIT License
-└── 📄 README.md                  # This file
+.
+├── apps/
+│   └── secretguard-web/     # Vite + React frontend
+├── packages/
+│   └── secretguard-core/    # Detector + masking SDK
+├── LICENSE
+├── package.json             # Workspace scripts
+└── vercel.json              # Deployment config
 ```
 
-### Key Directories
 
-- **`apps/secretguard-web/`** - React-based web application
-- **`packages/secretguard-core/`** - Reusable detection library
-- **`dist/`** - Build outputs (gitignored)
 
----
+## Contributing Guide
 
-## 💻 Usage
+1. Create a feature branch from `main`.
+2. Run `npm run lint` and `npm test` before opening a PR.
+3. Include screenshots or recordings when UI changes impact the masking workflow.
 
-### Web Application
+## Roadmap
 
-1. Open the SecretGuard web interface
-2. Paste or type your text containing sensitive data
-3. Watch as SecretGuard automatically detects and masks sensitive information in real-time
-4. Copy the masked text to share safely with AI services
+- ⏳ Browser extension that protects prompts anywhere you type.
+- ⏳ Shared masking policies synced across teams.
 
-### Programmatic Usage
+## License
 
-#### Install the Core Package
+Released under the MIT License © 2025 Jayesh Vegda. See `LICENSE` for full text.
 
-```bash
-npm install secretguard-core
-```
+## Contact
 
-#### Basic Example
+ping Jayesh on [LinkedIn](https://www.linkedin.com/in/jayeshvegda/).
 
-```javascript
-import { detectSensitiveText, maskText } from 'secretguard-core';
 
-// Detect sensitive data
-const text = "Contact me at john@example.com or call 555-1234";
-const matches = await detectSensitiveText(text);
-
-// Mask the sensitive data
-const result = await maskText(text, matches, {
-  mode: 'partial',
-  maskChar: '*'
-});
-
-console.log(result.maskedText);
-// "Contact me at j***@example.com or call ***-1234"
-```
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-- **React** 18.2.0 - UI Framework
-- **Vite** 5.0.8 - Build Tool
-- **TypeScript** 5.3.3 - Type Safety
-- **Tailwind CSS** 3.4.0 - Styling
-- **Framer Motion** 12.23.24 - Animations
-- **Lucide Icons** 0.553.0 - Icons
-
-### Core Library
-
-- **TypeScript** 5.3.3 - Type Safety
-- **tsup** 8.0.1 - Bundling
-- **Vitest** 1.1.0 - Testing
-
-### Development Tools
-
-- **ESLint** - Code linting
-- **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixes
-
-### Architecture
-
-- **Monorepo** - Workspace-based project structure
-- **Web Workers** - Background processing for detection
-- **Client-Side Only** - Zero server dependencies
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Fork the repo, create a feature branch, make your changes, and open a pull request.
-
-- 🐛 Bug fixes
-- ✨ New features
-- 📚 Documentation improvements
-
----
-
-## 📝 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-**Made with 🛡️ by the SecretGuard team**
-
-[⭐ Star us on GitHub](https://github.com/yourusername/secretguard) • [🐛 Report Bug](https://github.com/yourusername/secretguard/issues) • [💡 Request Feature](https://github.com/yourusername/secretguard/issues)
-
-</div>
